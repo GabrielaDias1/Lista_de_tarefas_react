@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import '..//CSS/ListaDeTarefas.css'
 
-function ListaDeTarefas(){
+function ListaDeTarefas() {
     const [tarefas, setTarefas] = useState([]);
     const [novaTarefa, setNovaTarefa] = useState('');
-    
+
     const adicionarTarefa = () => {
         if (novaTarefa.trim() !== '') {
             setTarefas([...tarefas, novaTarefa]);
@@ -11,14 +12,14 @@ function ListaDeTarefas(){
         }
     };
 
-    const removerTarefa = (index) =>{
+    const removerTarefa = (index) => {
         const novasTarefas = [...tarefas];
         novasTarefas.splice(index, 1);
         setTarefas(novasTarefas);
     };
 
     return (
-        <div>
+        <div className="container">
             <h2>Lista de Tarefas</h2>
             <input 
                 type="text"
@@ -28,7 +29,7 @@ function ListaDeTarefas(){
             />
             <button onClick={adicionarTarefa}>Adicionar</button>
             <ul>
-                {tarefas.map((tarefa, index)=>(
+                {tarefas.map((tarefa, index) => (
                     <li key={index}>
                         {tarefa}{' '}
                         <button onClick={() => removerTarefa(index)}>Remover</button>
